@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './styles.scss';
 import useFetch from '../../../hooks/useFetch';
 import { useSelector } from 'react-redux';
-import Img from '../../../components/lazyLoadImages.jsx/Img';
+import Img from '../../../components/lazyLoadImages/Img';
 import ContentWrapper from '../../../components/contentWrapper/contentWrapper';
 Img;
 
