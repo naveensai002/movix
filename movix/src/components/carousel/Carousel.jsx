@@ -15,7 +15,8 @@ import './styles.scss';
 import dayjs from 'dayjs';
 import CircleRating from '../circleRating/CircleRating';
 
-const Carousel = ({ data, loading, endPoint, title }) => {
+const Carousel = ({ data, loading, endpoint, title }) => {
+  console.log(endpoint);
   const { url } = useSelector((state) => state.home);
 
   const navigate = useNavigate();
@@ -60,20 +61,20 @@ const Carousel = ({ data, loading, endPoint, title }) => {
         {!loading ? (
           <div className='carouselItems' ref={carouselContainer}>
             {data?.map((item) => {
-              const posterUrl = item?.poster_path
-                ? url?.poster + item?.poster_path
+              const posterUrl = item.poster_path
+                ? url.poster + item.poster_path
                 : PosterFallback;
               return (
                 <div
                   key={item.id}
                   className='carouselItem'
                   onClick={() =>
-                    navigate(`/${item?.media_type || endPoint}/${item.id}}`)
+                    navigate(`/${item.media_type || endpoint}/${item.id}`)
                   }
                 >
                   <div className='posterBlock'>
                     <Img src={posterUrl} />
-                    <CircleRating rating={item?.vote_average?.toFixed(1)} />
+                    <CircleRating rating={item.vote_average.toFixed(1)} />
                   </div>
                   <div className='textBlock'>
                     <span className='title'>{item.title || item.name}</span>

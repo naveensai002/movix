@@ -10,6 +10,7 @@ import Similar from './Carousels/Similar';
 
 const Details = () => {
   const { mediaType, id } = useParams();
+  console.log(mediaType);
   const { data, loading } = useFetch(`/${mediaType}/${id}/videos`);
   const { data: credits, loading: creditsLoading } = useFetch(
     `/${mediaType}/${id}/credits`
