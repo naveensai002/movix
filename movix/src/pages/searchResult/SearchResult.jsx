@@ -16,8 +16,8 @@ const SearchResult = () => {
   const [loading, setLoading] = useState(false);
   const { query } = useParams();
 
-  console.log(query);
   useEffect(() => {
+    setPageNum(1);
     fetchInitialData();
   }, [query]);
 
