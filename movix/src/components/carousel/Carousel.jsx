@@ -15,7 +15,7 @@ import './styles.scss';
 import dayjs from 'dayjs';
 import CircleRating from '../circleRating/CircleRating';
 
-const Carousel = ({ data, loading, endPoint }) => {
+const Carousel = ({ data, loading, endPoint, title }) => {
   const { url } = useSelector((state) => state.home);
 
   const navigate = useNavigate();
@@ -48,6 +48,7 @@ const Carousel = ({ data, loading, endPoint }) => {
   return (
     <div className='carousel'>
       <ContentWrapper>
+        {title && <div className='carouselTitle'>{title}</div>}
         <BsFillArrowLeftCircleFill
           className='carouselLeftNav arrow'
           onClick={() => navigation('left')}
@@ -59,20 +60,20 @@ const Carousel = ({ data, loading, endPoint }) => {
         {!loading ? (
           <div className='carouselItems' ref={carouselContainer}>
             {data?.map((item) => {
-              const posterUrl = item.poster_path
-                ? url.poster + item.poster_path
+              const posterUrl = item?.poster_path
+                ? url?.poster + item?.poster_path
                 : PosterFallback;
               return (
                 <div
                   key={item.id}
                   className='carouselItem'
                   onClick={() =>
-                    navigate(`/${item.media_type || endPoint}/${item.id}}`)
+                    navigate(`/${item?.media_type || endPoint}/${item.id}}`)
                   }
                 >
                   <div className='posterBlock'>
                     <Img src={posterUrl} />
-                    <CircleRating rating={item.vote_average.toFixed(1)} />
+                    <CircleRating rating={item?.vote_average?.toFixed(1)} />
                   </div>
                   <div className='textBlock'>
                     <span className='title'>{item.title || item.name}</span>

@@ -71,7 +71,7 @@ const DetailsBanner = ({ video, crew }) => {
                   })}
                 </div>
                 <div className='row'>
-                  <CircleRating rating={data?.vote_average.toFixed(1)} />
+                  <CircleRating rating={data?.vote_average?.toFixed(1)} />
                   <div
                     className='playbtn'
                     onClick={() => {
