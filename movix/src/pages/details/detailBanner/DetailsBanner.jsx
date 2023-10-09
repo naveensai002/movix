@@ -31,10 +31,10 @@ const DetailsBanner = ({ video, crew }) => {
     return `${hours}h${minutes > 0 ? ` ${minutes}m` : ''}`;
   };
 
-  const director = crew?.filter((f) => f.job === 'Director');
-  console.log(director);
+  const director = crew?.filter((f) => f?.job === 'Director');
+
   const writer = crew?.filter(
-    (d) => d.job === 'Screenplay' || d.job === 'Story' || d.job === 'Writer'
+    (d) => d?.job === 'Screenplay' || d?.job === 'Story' || d?.job === 'Writer'
   );
 
   // console.log(director, writer);
@@ -44,7 +44,7 @@ const DetailsBanner = ({ video, crew }) => {
         <>
           {!!data && (
             <div className='backdrop-img'>
-              <Img src={url.backdrop + data?.backdrop_path} />
+              <Img src={url?.backdrop + data?.backdrop_path} />
             </div>
           )}
           <div className='opacity-layer'></div>
@@ -67,7 +67,7 @@ const DetailsBanner = ({ video, crew }) => {
                 <div className='subtitle'>{data?.tagline}</div>
                 <div className='genres'>
                   {data?.genres?.map((name) => {
-                    return <p key={name.id}>{name.name}</p>;
+                    return <p key={name?.id}>{name?.name}</p>;
                   })}
                 </div>
                 <div className='row'>
@@ -120,8 +120,8 @@ const DetailsBanner = ({ video, crew }) => {
                     <span className='text'>
                       {director?.map((d, i) => (
                         <span key={i}>
-                          {d.name}
-                          {director.length - 1 !== i && ','}
+                          {d?.name}
+                          {director?.length - 1 !== i && ','}
                         </span>
                       ))}
                     </span>
@@ -134,7 +134,7 @@ const DetailsBanner = ({ video, crew }) => {
                     <span className='text'>
                       {writer?.map((d, i) => (
                         <span key={i}>
-                          {d.name}
+                          {d?.name}
                           {writer?.length - 1 !== i && ','}
                         </span>
                       ))}

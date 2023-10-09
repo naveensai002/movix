@@ -9,23 +9,15 @@ import Recommendation from './Carousels/Recommendation';
 import Similar from './Carousels/Similar';
 
 const Details = () => {
-  const params = useParams();
-
-  const { mediaType, id } = params;
-  // console.log(mediaType, id);
-
-  const { loading, data } = useFetch(`/${mediaType}/${id}/videos`);
-  // console.log(data?.results);
-
-  const { loading: creditsLoading, data: credits } = useFetch(
+  const { mediaType, id } = useParams();
+  const { data, loading } = useFetch(`/${mediaType}/${id}/videos`);
+  const { data: credits, loading: creditsLoading } = useFetch(
     `/${mediaType}/${id}/credits`
   );
 
-  // console.log(data);
   return (
     <div>
       <DetailsBanner video={data?.results?.[0]} crew={credits?.crew} />
-
       <Cast data={credits?.cast} loading={creditsLoading} />
       <VideosSection data={data} loading={loading} />
       <Similar mediaType={mediaType} id={id} />

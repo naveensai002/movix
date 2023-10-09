@@ -33,7 +33,7 @@ const VideosSection = ({ data, loading }) => {
                 key={video.id}
                 className='videoItem'
                 onClick={() => {
-                  setVideoId(video.key);
+                  setVideoId(video?.key);
                   setShow(true);
                 }}
               >

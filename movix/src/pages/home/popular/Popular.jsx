@@ -9,13 +9,13 @@ const Popular = () => {
   const { loading, data } = useFetch(`/${endPoint}/popular`);
 
   const onTabChange = (tab) => {
-    setEndPoint(tab === 'Movie' ? 'movies' : 'tv');
+    setEndPoint(tab === 'Movie' ? 'movie' : 'tv');
   };
   return (
     <div className='carouselSection'>
       <ContentWrapper>
         <span className='carouselTitle'>What's Popular</span>
-        <SwitchTabs data={['Movies', 'TV Shows']} onTabChange={onTabChange} />
+        <SwitchTabs data={['Movie', 'TV Shows']} onTabChange={onTabChange} />
       </ContentWrapper>
       <Carousel data={data?.results} loading={loading} endPoint={endPoint} />
     </div>
